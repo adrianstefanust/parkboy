@@ -1,6 +1,5 @@
 package net.parkboy.parkboy.ui.map
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -13,7 +12,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import net.parkboy.parkboy.R
-import net.parkboy.parkboy.ui.home.HomeActivity
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -50,7 +48,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
         return true
     }
 }

@@ -18,29 +18,51 @@ class LoginActivity : AppCompatActivity() {
         initView()
     }
 
-    fun initView() {
+    private fun initView() {
         sign_up_layout.visibility = View.GONE
         login_layout.visibility = View.GONE
 
-        btn_login.setOnClickListener { login() }
-        inputUsername.setOnClickListener { checkLogin() }
-        inputPassword.setOnClickListener { checkLogin() }
+        login.setOnClickListener { viewChecker(1) }
+        registration.setOnClickListener { viewChecker(2) }
 
-        btn_registration.setOnClickListener { signUp() }
-        signConfirmPassword.setOnClickListener { checkSignUp() }
+        btn_login_cancel.setOnClickListener { viewChecker(3) }
+        btn_registration_cancel.setOnClickListener { viewChecker(4) }
     }
 
-    fun signUp() {
-        sign_up_layout.visibility = View.VISIBLE
-        login_layout.visibility = View.GONE
+    fun viewChecker(type: Int) {
+        when (type) {
+            1 -> {
+                login_layout.visibility = View.VISIBLE
+                login.visibility = View.GONE
+                registration.visibility = View.GONE
+
+                inputPassword.setOnClickListener { checkLogin() }
+                btn_login.setOnClickListener { checkLogin() }
+            }
+            2 -> {
+                sign_up_layout.visibility = View.VISIBLE
+                registration.visibility = View.GONE
+                login.visibility = View.GONE
+
+                signConfirmPassword.setOnClickListener { checkSignUp() }
+                btn_registration.setOnClickListener { checkSignUp() }
+            }
+            3 -> {
+                login.visibility = View.VISIBLE
+                registration.visibility = View.VISIBLE
+
+                login_layout.visibility = View.GONE
+            }
+            4 -> {
+                registration.visibility = View.VISIBLE
+                login.visibility = View.VISIBLE
+
+                sign_up_layout.visibility = View.GONE
+            }
+        }
     }
 
-    fun login() {
-        login_layout.visibility = View.VISIBLE
-        sign_up_layout.visibility = View.GONE
-    }
-
-    fun checkLogin() {
+    private fun checkLogin() {
         if (sign_up_layout.visibility == View.GONE) {
             if (!inputUsername.text.isNullOrEmpty() && !inputPassword.text.isNullOrEmpty()) {
                 if (inputUsername.text.toString() == "admin" && inputPassword.text.toString() == "admin") {
@@ -57,17 +79,17 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun checkSignUp() {
-        if (!inputUsername.text.isNullOrEmpty() && !inputPassword.text.isNullOrEmpty()) {
-            if (inputUsername.text.toString() == "admin" && inputPassword.text.toString() == "admin") {
+    private fun checkSignUp() {
+        if (!signUsername.text.isNullOrEmpty() && !signPassword.text.isNullOrEmpty()) {
+            if (signPassword.text.toString() == signConfirmPassword.text.toString()) {
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
+            } else {
+                Toast.makeText(this, "Password didn't match", Toast.LENGTH_SHORT).show()
             }
-        } else if (signConfirmPassword.text != signPassword.text) {
-            Toast.makeText(this, "Password didn't match", Toast.LENGTH_SHORT).show()
-        } else if (!inputUsername.text.isNullOrEmpty()) {
+        } else if (!signUsername.text.isNullOrEmpty()) {
             Toast.makeText(this, "Password can't be empty", Toast.LENGTH_SHORT).show()
-        } else if (!inputPassword.text.isNullOrEmpty()) {
+        } else if (!signPassword.text.isNullOrEmpty()) {
             Toast.makeText(this, "Username can't be empty", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this, "Username & password can't be empty", Toast.LENGTH_SHORT).show()
