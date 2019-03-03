@@ -37,6 +37,18 @@
             android:name=".ui.feature.BookActivity"
             android:label="Book"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.feature.AvailableActivity"
+            android:label="Available"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.feature.ParkActivity"
+            android:label="Park"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.feature.WalletActivity"
+            android:label="Wallet"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

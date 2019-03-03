@@ -22,7 +22,10 @@ import kotlinx.android.synthetic.main.recycler_news.view.*
 import kotlinx.android.synthetic.main.view_content.*
 import kotlinx.android.synthetic.main.view_home.*
 import net.parkboy.parkboy.R
+import net.parkboy.parkboy.ui.feature.AvailableActivity
 import net.parkboy.parkboy.ui.feature.BookActivity
+import net.parkboy.parkboy.ui.feature.ParkActivity
+import net.parkboy.parkboy.ui.feature.WalletActivity
 import net.parkboy.parkboy.ui.map.MapActivity
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -43,9 +46,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close
+            this, drawer_layout, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
@@ -73,6 +76,18 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun initBtn() {
         btn_book.setOnClickListener {
             val intent = Intent(this, BookActivity::class.java)
+            startActivity(intent)
+        }
+        btn_available.setOnClickListener {
+            val intent = Intent(this, AvailableActivity::class.java)
+            startActivity(intent)
+        }
+        btn_park.setOnClickListener {
+            val intent = Intent(this, ParkActivity::class.java)
+            startActivity(intent)
+        }
+        btn_wallet.setOnClickListener {
+            val intent = Intent(this, WalletActivity::class.java)
             startActivity(intent)
         }
     }
@@ -117,7 +132,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     inner class NewsAdapter(var context: Context, var newsList: ArrayList<String>) :
-            RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
+        RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, p1: Int): NewsAdapter.ViewHolder {
             val inflater = LayoutInflater.from(parent.context)
@@ -134,7 +149,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             fun bindView() {
                 Glide.with(context).load(newsList[adapterPosition])
-                        .into(itemView.newsHead)
+                    .into(itemView.newsHead)
             }
         }
     }

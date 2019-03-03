@@ -36,6 +36,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btn_available"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
@@ -45,6 +46,7 @@
                     android:tooltipText="See available park near your position" />
 
                 <Button
+                    android:id="@+id/btn_book"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
@@ -59,7 +61,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_book"
+                    android:id="@+id/btn_park"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
@@ -67,11 +69,12 @@
                     android:text="Your Park" />
 
                 <Button
+                    android:id="@+id/btn_wallet"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
                     android:background="@drawable/round_btn"
-                    android:text="Top Up" />
+                    android:text="Wallet" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
