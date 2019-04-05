@@ -1,4 +1,4 @@
-package net.parkboy.parkboy
+package net.parkboy.parkboy.util.data
 
 class BaseContract {
     interface Presenter<in T> {

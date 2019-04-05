@@ -1,4 +1,4 @@
-package net.parkboy.parkboy
+package net.parkboy.parkboy.util.data
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer

@@ -1,4 +1,4 @@
-package net.parkboy.parkboy.util
+package net.parkboy.parkboy.util.data
 
 class Constant {
     companion object {
