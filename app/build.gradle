@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "net.parkboy.parkboy"
         minSdkVersion 21
@@ -13,12 +13,17 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -42,12 +47,35 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 
+    // Dagger
+    implementation "com.google.dagger:dagger:$dagger2_version"
+    implementation "com.google.dagger:dagger-android:$dagger2_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger2_version"
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+
     // Google maps and place
     implementation 'com.google.android.gms:play-services-places:16.0.0'
-    implementation 'com.google.android.libraries.places:places:1.0.0'
 
     // Google Maps Android API Utility Library
     implementation 'com.google.maps.android:android-maps-utils:0.5'
 
-    //Image
+    //Payment Gateway
+//    implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
+//    implementation 'com.google.android.gms:play-services-wallet:16.0.0'
+
+    //Barcode
+    implementation 'com.github.bumptech.glide:glide:4.2.0'
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.google.com' }
 }

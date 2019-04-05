@@ -1,11 +1,8 @@
 <resources>
     <string name="app_name">ParkBoy</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="key">AIzaSyD84xxs1RH6QVhJSDx40QXKdyoFEqIOMR4</string>
+    <string name="title_home">Home</string>
+    <string name="title_places">Places</string>
+    <string name="title_tickets">Tickets</string>
+    <string name="title_profile">Profile</string>
+    <string name="key">AIzaSyCdfnkbfzL-lsgI3Hw0bBCoP6Z1z_p4OaE</string>
 </resources>
